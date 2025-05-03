@@ -10,7 +10,7 @@ dotenv.config();
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(cors({
-    origin: 'http://localhost:5173', // Replace with your frontend domain
+    origin: 'https://ecommerce-web-app-in-mern.onrender.com', // Replace with your frontend domain
     credentials: true, // Allow credentials
 }));
 app.use(session({
