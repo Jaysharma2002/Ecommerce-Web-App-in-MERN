@@ -15,7 +15,7 @@ function UserProfile({setProfileUpdate})
     const [selectedImage,setSelectedImage]=useState(null)
     useEffect(()=>{
         const fetch=async()=>{
-            const response=await axios.post("http://localhost:8000/api/product/userprofile",{},{withCredentials:true})
+            const response=await axios.post("https://ecommerce-web-app-in-mern.onrender.com/api/product/userprofile",{},{withCredentials:true})
             console.log(response.data)
             setEditData({
                 profileimage:response.data.profileimage || '',
@@ -51,7 +51,7 @@ function UserProfile({setProfileUpdate})
         formdata.append("phone",editData.phone)
         formdata.append("gender",editData.gender)
         formdata.append("age",editData.age)
-        const response=await axios.post("http://localhost:8000/api/product/updateprofile",formdata,{withCredentials:true,headers:{"Content-Type":"multipart/form-data"}})
+        const response=await axios.post("https://ecommerce-web-app-in-mern.onrender.com/api/product/updateprofile",formdata,{withCredentials:true,headers:{"Content-Type":"multipart/form-data"}})
         console.log(response.data)
         setEditData({
             profileimage:response.data.profileimage || '',

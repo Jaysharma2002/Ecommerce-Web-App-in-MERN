@@ -12,7 +12,7 @@ function AdminOrder(){
     const [updateButton,setUpdateButton]=useState(false)
     useEffect(()=>{
         const fetch=async()=>{
-            const response=await axios.get('http://localhost:8000/api/product/getorder')
+            const response=await axios.get('https://ecommerce-web-app-in-mern.onrender.com/api/product/getorder')
                 console.log(response.data)
                 setFilteredOrders(response.data)
                 setOrder(response.data)         
@@ -40,7 +40,7 @@ function AdminOrder(){
         {
             const fetch=async()=>{
                 console.log("selectedOrders",selectedOrders)
-                const response=await axios.put('http://localhost:8000/api/product/updatestatus',{selectedOrders:selectedOrders,changeOption:{orderStatus:changeOption}})
+                const response=await axios.put('https://ecommerce-web-app-in-mern.onrender.com/api/product/updatestatus',{selectedOrders:selectedOrders,changeOption:{orderStatus:changeOption}})
                 console.log(response.data)
                 setFilteredOrders((prevOrders)=>
                     prevOrders.map((order)=>

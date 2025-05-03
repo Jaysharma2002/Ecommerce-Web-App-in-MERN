@@ -8,7 +8,7 @@ function Register(){
     
     const navigate=useNavigate()
     function login(){
-        axios.post('http://localhost:8000/api/product/createuser',{
+        axios.post('https://ecommerce-web-app-in-mern.onrender.com/api/product/createuser',{
             name,email,password
         })
         .then((result)=>{

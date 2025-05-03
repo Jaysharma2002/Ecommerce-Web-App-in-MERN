@@ -11,7 +11,7 @@ function Order(){
     const [reviewSaved,setReviewSaved]=useState(false)
     useEffect(()=>{
         const fetch=async()=>{
-        const response=await axios.get('http://localhost:8000/api/product/getuserorder',{withCredentials:true})
+        const response=await axios.get('https://ecommerce-web-app-in-mern.onrender.com/api/product/getuserorder',{withCredentials:true})
             console.log(response.data)
             setFilteredOrders(response.data)
             setOrder(response.data)
@@ -60,7 +60,7 @@ function Order(){
 
     const cancelOrder=async(id)=>{
        const orderid=id
-       const response=await axios.put("http://localhost:8000/api/product/cancelorder",{id:orderid})
+       const response=await axios.put("https://ecommerce-web-app-in-mern.onrender.com/api/product/cancelorder",{id:orderid})
        console.log("cancelled orders",response.data)
        setFilteredOrders((prevOrder)=>
         prevOrder.map((order)=>
@@ -74,7 +74,7 @@ function Order(){
 
     const saveRating=async(orderId,productId,rating)=>{
         try {
-            await axios.put("http://localhost:8000/api/product/saverating", { productId, rating, orderId }, { withCredentials: true });
+            await axios.put("https://ecommerce-web-app-in-mern.onrender.com/api/product/saverating", { productId, rating, orderId }, { withCredentials: true });
             setRatings(prevRatings => ({ ...prevRatings, [productId._id]:rating }));
             setReviewSaved(true)
         } catch (error) {
@@ -85,7 +85,7 @@ function Order(){
     const saveComment=async(productId,orderId)=>{
         try{
             const comment=comments[orderId]
-            await axios.put("http://localhost:8000/api/product/savecomment",{productId,comment,orderId},{withCredentials:true});
+            await axios.put("https://ecommerce-web-app-in-mern.onrender.com/api/product/savecomment",{productId,comment,orderId},{withCredentials:true});
             setComments(prevComments => ({ ...prevComments, [productId]:comment}))
             setReviewSaved(true)
 

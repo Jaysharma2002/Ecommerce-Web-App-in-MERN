@@ -11,7 +11,7 @@ function Beauty({selectedcategory,setProducts,searchedProduct,setAddedtocart,add
     useEffect(() => {
         console.log(selectedcategory);
         const fetch=async()=>{
-            await axios.get("http://localhost:8000/api/product/fetch").then((response) => {
+            await axios.get("https://ecommerce-web-app-in-mern.onrender.com/api/product/fetch").then((response) => {
                 const products=response.data
                 const filteredItems =products.filter((item)=>{
                     const categoryfiltereditem=selectedcategory?.toLowerCase()==="all" || item.category.toLowerCase()===selectedcategory.toLowerCase()

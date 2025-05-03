@@ -22,7 +22,7 @@ function AdminContent({selectedCategory,searchProduct}){
         const fetch=async()=>{
             try {
                 
-                await axios.get("http://localhost:8000/api/product/fetch").then((response)=>{
+                await axios.get("https://ecommerce-web-app-in-mern.onrender.com/api/product/fetch").then((response)=>{
                     const products=response.data
                     const filteredItems=products.filter((item)=>{
                     const selectedfiltereditems=selectedCategory?.toLowerCase()==="all" || item.category.toLowerCase()===selectedCategory.toLowerCase()
@@ -48,7 +48,7 @@ function AdminContent({selectedCategory,searchProduct}){
     )}
 
     const AddProduct=async()=>{
-        const response=await axios.post("http://localhost:8000/api/product/create",{
+        const response=await axios.post("https://ecommerce-web-app-in-mern.onrender.com/api/product/create",{
             title:newProduct.title,
             images:newProduct.images,
             description:newProduct.description,
@@ -83,7 +83,7 @@ function AdminContent({selectedCategory,searchProduct}){
         if(!isEdit){
             console.log("No Product Found")
         }
-        const response=await axios.put(`http://localhost:8000/api/product/update/${isEdit}`,{
+        const response=await axios.put(`https://ecommerce-web-app-in-mern.onrender.com/api/product/update/${isEdit}`,{
             title:newProduct.title,
             images:newProduct.images,
             description:newProduct.description,
@@ -100,7 +100,7 @@ function AdminContent({selectedCategory,searchProduct}){
     }
 
     const handleDelete=async(id)=>{
-        await axios.delete(`http://localhost:8000/api/product/delete/${id}`)
+        await axios.delete(`https://ecommerce-web-app-in-mern.onrender.com/api/product/delete/${id}`)
         setProducts((prev)=>{return prev.filter((product)=>product._id!==id)})
     }
 

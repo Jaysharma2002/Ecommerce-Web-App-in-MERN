@@ -13,7 +13,7 @@ function Header({ setSelectedcategory, searchedProduct, setSearchedProduct,added
 
     useEffect(()=>{
         const fetchimage=async()=>{
-            const response=await axios.post("http://localhost:8000/api/product/profileimage",{},{withCredentials:true})
+            const response=await axios.post("https://ecommerce-web-app-in-mern.onrender.com/api/product/profileimage",{},{withCredentials:true})
             setProfileImageURL(response.data)
             console.log(response.data)
         }
@@ -21,7 +21,7 @@ function Header({ setSelectedcategory, searchedProduct, setSearchedProduct,added
     },[])
     useEffect(()=>{
         const fetchimage=async()=>{
-            const response=await axios.post("http://localhost:8000/api/product/profileimage",{},{withCredentials:true})
+            const response=await axios.post("https://ecommerce-web-app-in-mern.onrender.com/api/product/profileimage",{},{withCredentials:true})
             setProfileImageURL(response.data)
             console.log(response.data)
         }
@@ -54,7 +54,7 @@ function Header({ setSelectedcategory, searchedProduct, setSearchedProduct,added
         navigate(path);
     };
     function logout(){
-        axios.post('http://localhost:8000/api/product/logout',{},{withCredentials:true})
+        axios.post('https://ecommerce-web-app-in-mern.onrender.com/api/product/logout',{},{withCredentials:true})
         setProfileShow(false)
         navigateTo('/')
     }
