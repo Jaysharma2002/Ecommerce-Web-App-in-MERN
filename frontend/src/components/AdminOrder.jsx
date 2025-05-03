@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from "react";
 import axios from 'axios'
 import '../styles/AdminOrder.css'
-import { updateorder } from "../../../backend/Controller";
 function AdminOrder(){
     const [orders,setOrder]=useState([])
     const [filteredOrders,setFilteredOrders]=useState([])
