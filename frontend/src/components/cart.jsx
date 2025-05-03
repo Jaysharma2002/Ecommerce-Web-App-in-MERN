@@ -27,7 +27,7 @@ function Cart({ product,setProducts,setAddedtocart,addedToCart,userId}) {
     useEffect(()=>{
         window.scrollTo(0,0)
         const fetch=async()=>{
-            const response=await axios.post("https://ecommerce-web-app-in-mern.onrender.com/api/product/getaddress",{},{withCredentials:true})
+            const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/getaddress",{},{withCredentials:true})
             setEditData({
                 address:response.data.address || '',
                 phone:response.data.phone || ''
@@ -54,7 +54,7 @@ function Cart({ product,setProducts,setAddedtocart,addedToCart,userId}) {
     }
 
     const submit=async()=>{
-        const response=await axios.put("https://ecommerce-web-app-in-mern.onrender.com/api/product/updateaddress",editData,{withCredentials:true})
+        const response=await axios.put("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/updateaddress",editData,{withCredentials:true})
         setEditData({
             address:response.data.address,
             phone:response.data.phone
@@ -77,7 +77,7 @@ function Cart({ product,setProducts,setAddedtocart,addedToCart,userId}) {
     const Payment=async()=>{
         
         if(editData.address!=='' && editData.phone!==''){
-        const response = await fetch('https://ecommerce-web-app-in-mern.onrender.com/api/product/payment', {
+        const response = await fetch('https://ecommerce-web-app-in-mern-1.onrender.com/api/product/payment', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ function Cart({ product,setProducts,setAddedtocart,addedToCart,userId}) {
             try{
                 console.log(product)
                 navigate("/home")
-                axios.post('https://ecommerce-web-app-in-mern.onrender.com/api/product/order',{products:product},{withCredentials:true})
+                axios.post('https://ecommerce-web-app-in-mern-1.onrender.com/api/product/order',{products:product},{withCredentials:true})
                 setProducts([])
                 setAddedtocart(0)
             }
