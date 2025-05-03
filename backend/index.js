@@ -22,12 +22,19 @@ app.use(session({
     },
 }));
 
-const PORT=process.env.PORT||5000
-const MONGODB_URL=process.env.MONGO_URL
-mongoose.connect(MONGODB_URL).then(()=>{
-    console.log("Database Connected Successfully")
+const MONGODB_URL = process.env.MONGO_URL;
+mongoose.connect(MONGODB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-app.listen(PORT,()=>{
+.then(() => console.log("✅ MongoDB Connected Successfully"))
+.catch((err) => {
+  console.error("❌ MongoDB Connection Error:");
+  console.error(err);
+});
+
+const PORT=process.env.PORT||5000
+app.listen(PORT,'0.0.0.0',()=>{
     console.log(`Server is Connnected To Port ${PORT}`)
 })
 
