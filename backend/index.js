@@ -18,6 +18,7 @@ app.use(cors({
 }));
 
 app.use(session({
+    name: 'connect.sid',
     secret: 'your-secret-key', 
     resave: false,
     saveUninitialized: false,
