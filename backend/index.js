@@ -39,7 +39,6 @@ app.use(session({
         secure: true,
         httpOnly:true, // ⚠️ Enable this if you're using HTTPS
         sameSite: 'none',
-        domain: ".onrender.com", // ✅ Important for cross-origin cookies
     },
 }));
 
