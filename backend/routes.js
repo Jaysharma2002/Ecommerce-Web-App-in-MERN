@@ -14,7 +14,7 @@ route.get('/getorder',getorder)
 route.put('/updatestatus',updateorder)
 route.get('/getuserorder',getuserorder)
 route.put('/cancelorder',cancelorder)
-route.post('/userprofile',userprofile)
+route.get('/userprofile',userprofile)
 route.post('/updateprofile', updateprofile);
 route.put('/updateaddress',updateaddress)
 route.post('/getaddress',getaddress)
