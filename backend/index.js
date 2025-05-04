@@ -38,7 +38,8 @@ app.use(session({
         maxAge: 24 * 60 * 60 * 1000, // 1 day
         secure: true,
         httpOnly:true, // ⚠️ Enable this if you're using HTTPS
-        sameSite: 'none', // ✅ Important for cross-origin cookies
+        sameSite: 'none',
+        domain: ".onrender.com", // ✅ Important for cross-origin cookies
     },
 }));
 
