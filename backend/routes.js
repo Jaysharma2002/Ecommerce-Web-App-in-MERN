@@ -1,5 +1,5 @@
 import express from "express"
-import {fetch,create,update,delete1,payment,alluser,signin,order,getorder,updateorder,getuserorder,cancelorder,userprofile,updateprofile,profileimage,updateaddress,getaddress,logout,saverating,savecomment} from "./Controller.js"
+import {fetch,create,update,delete1,payment,alluser,signin,order,getorder,updateorder,getuserorder,cancelorder,userprofile,updateprofile,updateaddress,getaddress,logout,saverating,savecomment} from "./Controller.js"
 
 const route=new express.Router()
 route.post("/create",create)
