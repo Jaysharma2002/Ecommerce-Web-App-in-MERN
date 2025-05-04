@@ -111,7 +111,6 @@ export const alluser=async(req,res)=>{
             return res.status(400).json({ error: "All fields are required" });
         }
         const user=await User.create({
-            profileimage:'',
             name,
             email,
             password,
