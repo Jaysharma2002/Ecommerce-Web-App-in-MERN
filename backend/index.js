@@ -6,16 +6,23 @@ import cors from "cors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 
-const app = express();
 dotenv.config();
+const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.set('trust proxy', 1); // << IMPORTANT for secure cookies behind a proxy
 
 app.use(cors({
     origin: 'https://ecommerce-web-app-in-mern.onrender.com',
     credentials: true,
 }));
+
+app.options("*", cors({
+    origin: 'https://ecommerce-web-app-in-mern.onrender.com',
+    credentials: true,
+}));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(session({
     name: 'connect.sid',
