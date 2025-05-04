@@ -11,7 +11,6 @@ function UserProfile({setProfileUpdate})
         gender:'',
         age:''
     })
-    const [selectedImage,setSelectedImage]=useState(null)
     useEffect(()=>{
         const fetch=async()=>{
             const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/userprofile",{},{withCredentials:true})
@@ -35,18 +34,8 @@ function UserProfile({setProfileUpdate})
             [name]:value,
         }))
     }
-    function ImageHandler(e){
-        setSelectedImage(e.target.files[0])
-    }
     const submit=async()=>{
-        const formdata=new FormData()
-        formdata.append("name",editData.name)
-        formdata.append("email",editData.email)
-        formdata.append("address",editData.address)
-        formdata.append("phone",editData.phone)
-        formdata.append("gender",editData.gender)
-        formdata.append("age",editData.age)
-        const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/updateprofile",formdata,{withCredentials:true,headers:{"Content-Type":"multipart/form-data"}})
+        const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/updateprofile",editData,{withCredentials:true})
         console.log(response.data)
         setEditData({
             name:response.data.name || '',
@@ -64,16 +53,12 @@ function UserProfile({setProfileUpdate})
             <h1 className="headertitle">User Profile</h1>
             <img src="blank-profile.png" className="profileimage"/>
             <div className="borderline">
-                <label>Photo:</label>
-                <input type="file" accept="image/*" onChange={ImageHandler}/>
-            </div>
-            <div className="borderline">
                 <label>Name:</label>
                 <input type="text" name="name" value={editData.name} onChange={InputHandler}/>
             </div>
             <div className="borderline">
                 <label>Email:</label>
-                <input type="text" name="email" value={editData.email} onChange={InputHandler}/>
+                <input type="text" name="email" value={editData.email} onChange={InputHandler} disabled/>
             </div>
             <div className="borderline">
                 <label>Address:</label>
