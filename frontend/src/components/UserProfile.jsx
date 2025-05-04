@@ -4,7 +4,6 @@ import '../styles/UserProfile.css'
 function UserProfile({setProfileUpdate})
 {
     const [editData,setEditData]=useState({
-        profileimage:'',
         name:'',
         email:'',
         address:'',
@@ -18,7 +17,6 @@ function UserProfile({setProfileUpdate})
             const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/userprofile",{},{withCredentials:true})
             console.log(response.data)
             setEditData({
-                profileimage:response.data.profileimage || '',
                 name:response.data.name || '',
                 email:response.data.email || '',
                 address:response.data.address || '',
@@ -42,9 +40,6 @@ function UserProfile({setProfileUpdate})
     }
     const submit=async()=>{
         const formdata=new FormData()
-        if(selectedImage){
-            formdata.append("profileimage",selectedImage)
-        }
         formdata.append("name",editData.name)
         formdata.append("email",editData.email)
         formdata.append("address",editData.address)
@@ -54,7 +49,6 @@ function UserProfile({setProfileUpdate})
         const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/updateprofile",formdata,{withCredentials:true,headers:{"Content-Type":"multipart/form-data"}})
         console.log(response.data)
         setEditData({
-            profileimage:response.data.profileimage || '',
             name:response.data.name || '',
             email:response.data.email || '',
             address:response.data.address || '',
@@ -68,7 +62,7 @@ function UserProfile({setProfileUpdate})
         <div className="Allcontainer">
         <div className="userprofile">
             <h1 className="headertitle">User Profile</h1>
-            {editData.profileimage===""?(<img src="blank-profile.png" className="profileimage"/>):(<img src={`backend/${editData.profileimage}`} className="profileimage"/>)}
+            <img src="blank-profile.png" className="profileimage"/>
             <div className="borderline">
                 <label>Photo:</label>
                 <input type="file" accept="image/*" onChange={ImageHandler}/>

@@ -48,9 +48,6 @@ const Schema = new mongoose.Schema({
   });
 
 const UserSchema=mongoose.Schema({
-    profileimage: {
-        type: String
-    },
     name:{
         type:String,
         required:true

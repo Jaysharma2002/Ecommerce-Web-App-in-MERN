@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from 'react';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import '../styles/Header.css';
 
@@ -7,29 +7,8 @@ function Header({ setSelectedcategory, searchedProduct, setSearchedProduct,added
     const [isSidebarvisible, setSidebarvisible] = useState(false); 
     const [showMessage,setShowMessage]=useState(false)
     const [profileShow,setProfileShow]=useState(false)
-    const [profileImageURL,setProfileImageURL]=useState('')
     const navigate = useNavigate();
-    const location = useLocation();
 
-    useEffect(()=>{
-        const fetchimage=async()=>{
-            const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/profileimage",{},{withCredentials:true})
-            setProfileImageURL(response.data)
-            console.log(response.data)
-        }
-        fetchimage()
-    },[])
-    useEffect(()=>{
-        const fetchimage=async()=>{
-            const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/profileimage",{},{withCredentials:true})
-            setProfileImageURL(response.data)
-            console.log(response.data)
-        }
-        if(profileupdate)
-        {
-            fetchimage()
-        }
-    },[profileupdate])
     useEffect(()=>{
         if(productInCart)
         {
@@ -76,7 +55,7 @@ function Header({ setSelectedcategory, searchedProduct, setSearchedProduct,added
                         <button onClick={() => {setSidebarvisible(true);setProfileShow(false)}}><i className="fa-solid fa-list"> Category</i> </button>
                         <div className="profilebutton-container">
                             <button onClick={()=>{setProfileShow(true);setSidebarvisible(false)}}>
-                                <img src={profileImageURL ? `backend/${profileImageURL}` : "blank-profile.png"} className="profilebutton"/>
+                                <img src= "blank-profile.png" className="profilebutton"/>
                             </button>
                             <div className={`profile ${profileShow ? 'visible' : 'hidden'}`}>
                                 <button onClick={() => setProfileShow(false)} className='closebutton'>{"X"}</button>

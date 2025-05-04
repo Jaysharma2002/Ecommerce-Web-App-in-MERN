@@ -281,7 +281,6 @@ export const cancelorder=async(req,res)=>{
             return res.status(400).json({ error: "Order is already cancelled" });
         }
         const { product: productId, quantity, size } = existingOrder.items;
-        console.log(existingOrder,productId,quantity,size)
         const dbProduct = await Product.findById(productId);
         if (dbProduct) {
             const sizeToUpdate = dbProduct.sizes.find(s => s.size === size);
@@ -317,30 +316,12 @@ export const updateprofile=async(req,res)=>{
         const userId=req.session.userId
         console.log(userId)
         const updateData={...req.body}
-        if(req.file)
-        {
-            updateData.profileimage = `/uploads/${req.file.filename}`;
-        }
         const user=await User.findByIdAndUpdate(userId,updateData,{new:true})
         if(!user)
             {
                 return res.status(404).json({message:"No User Found"})
             }
         return res.json(user)
-    } catch (error) {
-        return res.status(404).json({error:"Internal Server Error"})
-    }
-}
-export const profileimage=async(req,res)=>{
-    try {
-        const userId=req.session.userId
-        const user=await User.findById(userId)
-        if(!user){
-            return res.status(404).json({message:"No User Found"})
-        }
-        const profileimageurl=user.profileimage
-        return res.json(profileimageurl)
-        
     } catch (error) {
         return res.status(404).json({error:"Internal Server Error"})
     }

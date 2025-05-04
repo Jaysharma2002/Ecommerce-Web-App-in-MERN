@@ -1,7 +1,5 @@
 import express from "express"
-import upload from "./Middleware.js"; 
 import {fetch,create,update,delete1,payment,alluser,signin,order,getorder,updateorder,getuserorder,cancelorder,userprofile,updateprofile,profileimage,updateaddress,getaddress,logout,saverating,savecomment} from "./Controller.js"
-import { all } from "axios"
 
 const route=new express.Router()
 route.post("/create",create)
@@ -17,8 +15,7 @@ route.put('/updatestatus',updateorder)
 route.get('/getuserorder',getuserorder)
 route.put('/cancelorder',cancelorder)
 route.post('/userprofile',userprofile)
-route.post('/updateprofile', upload.single('profileimage'), updateprofile);
-route.post('/profileimage',profileimage)
+route.post('/updateprofile', updateprofile);
 route.put('/updateaddress',updateaddress)
 route.post('/getaddress',getaddress)
 route.post('/logout',logout)
