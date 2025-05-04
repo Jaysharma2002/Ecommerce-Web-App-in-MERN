@@ -135,7 +135,7 @@ export const signin = async (req, res) => {
         }
         if (user.password === password) {
             const uid=user._id
-            req.session.userId=uid
+            req.session.userId={uid}
             await req.session.save();
             return res.status(200).json({ message: "Success",uid:uid});
         } else {

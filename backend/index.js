@@ -25,6 +25,7 @@ app.use(session({
     store: MongoStore.create({
         mongoUrl: process.env.MONGO_URL,
         collectionName: 'sessions',
+        ttl: 14 * 24 * 60 * 60,
     }),
     cookie: {
         maxAge: 24 * 60 * 60 * 1000, // 1 day
