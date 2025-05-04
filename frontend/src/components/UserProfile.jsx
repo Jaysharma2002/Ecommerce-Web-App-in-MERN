@@ -13,7 +13,7 @@ function UserProfile({setProfileUpdate})
     })
     useEffect(()=>{
         const fetch=async()=>{
-            const response=await axios.post("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/userprofile",{},{withCredentials:true})
+            const response=await axios.get("https://ecommerce-web-app-in-mern-1.onrender.com/api/product/userprofile",{withCredentials:true})
             console.log(response.data)
             setEditData({
                 name:response.data.name || '',
