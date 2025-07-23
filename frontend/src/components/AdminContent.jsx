@@ -113,7 +113,7 @@ function AdminContent({selectedCategory,searchProduct}){
                     <th>Product Name</th>
                     <th>Product Image</th>
                     <th>Product Description</th>
-                    <th>Pice</th>
+                    <th>Price</th>
                     <th>Rating</th>
                     <th>Quantity</th>
                     <th>Category Name</th>
@@ -127,7 +127,9 @@ function AdminContent({selectedCategory,searchProduct}){
                     <td><img src={item.images[0]}></img></td>
                     <td><textarea defaultValue={`${item.description}`}></textarea></td>
                     <td><p>{item.price}</p></td>
-                    <td><p>{item.rating}</p></td>
+                    <td><p>{item.reviews.length>0?((()=>{const totalRating=item.reviews.reduce((sum,review)=>sum+review.rating,0)
+                                                                                  const averageRating=(totalRating/item.reviews.length).toFixed(1)
+                                                                                  return `${averageRating}`})()):(<span>NA</span>)}</p></td>
                     <td><p>{item.quantity}</p></td>
                     <td><p>{item.category}</p></td>
                     <td><button className="colbutton" onClick={()=>{handleupdateInput(item);setIsVisible(true);setOnChange(false)}}><i className="fa-solid fa-pen-to-square"></i><span className="text">Edit</span></button></td>
