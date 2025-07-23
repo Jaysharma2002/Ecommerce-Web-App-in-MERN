@@ -10,7 +10,6 @@ function AdminContent({selectedCategory,searchProduct}){
         images:"",
         description:"",
         price:"",
-        rating:"",
         quantity:"",
         category:"",
     })
@@ -53,7 +52,6 @@ function AdminContent({selectedCategory,searchProduct}){
             images:newProduct.images,
             description:newProduct.description,
             price:newProduct.price,
-            rating:newProduct.rating,
             quantity:newProduct.quantity,
             category:newProduct.category,
         })
@@ -64,7 +62,7 @@ function AdminContent({selectedCategory,searchProduct}){
             return [response.data]
            
         })
-        setNewProduct({title:"",images:"",description:"",price:"",rating:"",quantity:"",category:"",})
+        setNewProduct({title:"",images:"",description:"",price:"",quantity:"",category:"",})
     }
 
     function handleupdateInput(item){
@@ -73,7 +71,6 @@ function AdminContent({selectedCategory,searchProduct}){
             images:item.images,
             description:item.description,
             price:item.price,
-            rating:item.rating,
             quantity:item.quantity,
             category:item.category})
         setIsEdit(item._id)
@@ -88,7 +85,6 @@ function AdminContent({selectedCategory,searchProduct}){
             images:newProduct.images,
             description:newProduct.description,
             price:newProduct.price,
-            rating:newProduct.rating,
             quantity:newProduct.quantity,
             category:newProduct.category,
         })
@@ -96,7 +92,7 @@ function AdminContent({selectedCategory,searchProduct}){
         setProducts((products)=>products.map((product)=>
             product._id===isEdit?response.data:product
         ))
-        setNewProduct({title:"",images:"",description:"",price:"",rating:"",quantity:"",category:""})
+        setNewProduct({title:"",images:"",description:"",price:"",quantity:"",category:""})
     }
 
     const handleDelete=async(id)=>{
@@ -146,7 +142,6 @@ function AdminContent({selectedCategory,searchProduct}){
             <input type="text" name="images" value={newProduct.images} onChange={handleInput} placeholder="Product Image URL"></input>
             <input type="text" name="description" value={newProduct.description} onChange={handleInput} placeholder="Product Description"></input>
             <input type="text" name="price" value={newProduct.price} onChange={handleInput} placeholder="Product Price"></input>
-            <input type="text" name="rating" value={newProduct.rating} onChange={handleInput} placeholder="Product Rating"></input>
             <input type="text" name="quantity" value={newProduct.quantity} onChange={handleInput} placeholder="Product Quantity"></input>
             <input type="text" name="category" value={newProduct.category} onChange={handleInput} placeholder="Product Category"></input>
             <div className="popbuttons">
