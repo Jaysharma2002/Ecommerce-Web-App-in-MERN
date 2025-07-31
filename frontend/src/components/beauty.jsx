@@ -82,11 +82,16 @@ function Beauty({selectedcategory,setProducts,searchedProduct,setAddedtocart,add
                 <p><span className="head">Rating</span>:{e.reviews.length>0?((()=>{const totalRating=e.reviews.reduce((sum,review)=>sum+review.rating,0)
                                                                                   const averageRating=(totalRating/e.reviews.length).toFixed(1)
                                                                                   return `${averageRating}`})()):(<span>NA</span>)}/5</p>
-                {e.sizes[0].quantity>0?(
-                    <button className="add" onClick={(event)=>{event.stopPropagation();addtocart(e)}}><i className="fa-solid fa-cart-plus">Add to Cart</i></button>
-                ):(
-                    <button className="outofstock" disabled={true}><i className="fa-solid fa-cart-plus">Out Of Stock</i></button>
+                {e.sizes && e.sizes.length > 0 && e.sizes[0].quantity > 0 ? (
+                <button className="add" onClick={(event) => { event.stopPropagation(); addtocart(e) }}>
+                    <i className="fa-solid fa-cart-plus">Add to Cart</i>
+                </button>
+                ) : (
+                <button className="outofstock" disabled={true}>
+                    <i className="fa-solid fa-cart-plus">Out Of Stock</i>
+                </button>
                 )}
+
             </div>)):(<h1>No Product Found</h1>)}
         </div>
         </>
